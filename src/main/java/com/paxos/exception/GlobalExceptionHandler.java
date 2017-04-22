@@ -13,6 +13,10 @@ import java.util.Map;
  * Created by hyh608 on 4/21/17.
  */
 
+/**
+ * This is a global exception handler to handle all unhandled controller level exceptions
+ */
+
 @ControllerAdvice
 @RestController
 public class GlobalExceptionHandler {

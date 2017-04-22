@@ -11,11 +11,25 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * Created by hyh608 on 4/21/17.
  */
+
+/**
+ *  This is the Controller class
+ */
+
 @Component
 public class Service {
 
+    /**
+     * This is the in memory map to store all hashed messages
+     */
     ConcurrentMap<String, String> map = new ConcurrentHashMap<String, String>();
 
+    /**
+     *
+     * @param message the raw message to be hashed
+     * @return hash the hashed raw message
+     * @throws NoSuchAlgorithmException
+     */
     public String sha256Hash(String message) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(message.getBytes());
@@ -32,7 +46,12 @@ public class Service {
         return sb.toString();
     }
 
-
+    /**
+     *
+     * @param hash the hash to be matched with a raw message
+     * @return message the matched raw message
+     * @throws DoesNotExistException
+     */
     public String sha256Unhash(String hash) throws DoesNotExistException {
         if (map.containsKey(hash)) {
             return map.get(hash);
